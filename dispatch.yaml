@@ -1,0 +1,5 @@
+dispatch:
+
+  - url: "*/.well-known/*"
+    module: letsencrypt
+
