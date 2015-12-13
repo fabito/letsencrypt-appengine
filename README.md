@@ -3,7 +3,7 @@
 Google App engine python module for [letsencrypt](https://letsencrypt.org/) challenge/response verification.
 
 
-## Deploying module on GAE
+## Deploying to GAE
 
 ```!bash
 export PROJECT_ID=myproject
