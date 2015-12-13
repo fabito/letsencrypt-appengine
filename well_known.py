@@ -1,14 +1,13 @@
 import webapp2
 from google.appengine.ext import ndb
 
-#http://ciandt-com.smartcanvas.tk/.well-known/acme-challenge/YoGyaFHfhzV0koF7MPneVQi7ybl2xLBw40WBVvcg1_o
-#YoGyaFHfhzV0koF7MPneVQi7ybl2xLBw40WBVvcg1_o.FHpbV2_B7iECeqhk__xAQEvWaZDxhWAJVbo7LBFIyfs
 
 class AcmeChallenge(ndb.Model):
     solution = ndb.StringProperty(indexed=False)
 
     def full_solution(self):
     	return self.key.id() + "." + self.solution
+
 
 class AcmeChallengeHandler(webapp2.RequestHandler):
 
