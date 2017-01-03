@@ -5,6 +5,9 @@ runtime: python27
 api_version: 1
 threadsafe: true
 
+env_variables:
+  BEARER_TOKEN: 'mysecrettoken'
+
 handlers:
 - url: /.*
   script: well_known.app

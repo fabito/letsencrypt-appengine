@@ -9,7 +9,7 @@ Google App engine python module for [letsencrypt](https://letsencrypt.org/) chal
 export PROJECT_ID=myproject
 
 # installs the module
-appcfg.py -A $PROJECT_ID update app.yaml 
+appcfg.py -A $PROJECT_ID --env_variable=BEARER_TOKEN:mysecrettoken update app.yaml 
 
 # Dispatches /.well-known/* to this module
 appcfg.py -A $PROJECT_ID update_dispatch .
@@ -26,7 +26,8 @@ docker run -it --rm -p 443:443 -p 80:80 --name letsencrypt -v "/etc/letsencrypt:
 Before triggering the challenge response verification we need to store each challenge (and its respective response). The command below does exactly that. Note that you need to replace the `<challenge>.<response>` part at the end of the URL - just copy from the letsencrypt stdout.
 
 ```!bash
-curl 'https://myproject.appspot.com/.well-known/acme-challenge/OziHcpbKR9SYH0L6tl12345Hv-WvPEIoMVhweeZG9LU.hYSj9EX5tPUQbd5NHpd12345XGVVy24pIXLIPg12345' -X POST --compressed
+curl -v -XPOST -H 'Authorization: Bearer mysecrettoken' 'https://myproject.appspot.com/.well-known/acme-challenge/OziHcpbKR9SYH0L6tl12345Hv-WvPEIoMVhweeZG9LU.hYSj9EX5tPUQbd5NHpd12345XGVVy24pIXLIPg12345'
+
 ```
 
 ## Upload certificates to GAE
